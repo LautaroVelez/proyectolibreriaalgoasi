@@ -1,19 +1,12 @@
-import ast
-from typing import List
-from os import listdir
+from tkinter import *
 
-def get_streamings(path: str = 'MyData') -> List[dict]:
-    
-    files = ['MyData/' + x for x in listdir(path)
-             if x.split('.')[0][:-1] == 'StreamingHistory']
-    
-    all_streamings = []
-    
-    for file in files: 
-        with open(file, 'r', encoding='UTF-8') as f:
-            new_streamings = ast.literal_eval(f.read())
-            all_streamings += [streaming for streaming 
-                               in new_streamings]
-    return all_streamings
+from setuptools import Command
 
+ventana = Tk()
 
+ventana.grid()
+boton=Button(text="Hola",width=10,height=10)
+boton.grid(column=0,row=0)
+boton.config(command=lambda:print("hola"))
+boton.pack()
+ventana.mainloop()
