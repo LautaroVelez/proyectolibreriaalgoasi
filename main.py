@@ -9,11 +9,13 @@ from timezonefinder import TimezoneFinder
 from geopy.geocoders import Nominatim
 from datetime import datetime
 import pytz
+from opencage.geocoder import OpenCageGeocode
 
 root = Tk()
 root.title("Localizador de telefono-LJM")
 root.geometry("365x584+200+200")
 root.resizable(False,False)
+
 
 def buscar():
     entrada_numeros=entrada.get()
@@ -32,11 +34,16 @@ def buscar():
     zona.config(text=time)
 
     #longitudylatitud
-    geolocator=Nominatim(user_agent="geoapiExercises")
-    location= geolocator.geocode(locate)
+    geocodereano = OpenCageGeocode("d3cf1876e1b2445a99d97127c77cfce8")
+    query=str(locate)
+    results=geocodereano.geocode(query)
+    lat=results[0]['geometry']['lat']
+    long=results[0]['geometry']['lng']
+    ##map=results[0]['geometry']['note_url']
+    print(results)
 
-    long=location.longitude
-    lat=location.latitude
+
+    
     longitud.config(text=long)
     latitud.config(text=lat)
 
@@ -49,7 +56,11 @@ def buscar():
     current_time= local_time.strftime("%I:%M:%p")
     clock.config(text=current_time)
 
+    
+    
 ####            INTERFAZ GRAFICA OORRRWWWW         ############
+
+
 
 #LOGO
 logo=PhotoImage(file="logo.png")
@@ -86,9 +97,9 @@ clock=Label(root,text="Phone Time:",bg="#57adff",fg="black",font=("arial",10,"bo
 clock.place(x=200,y=480)
 
 longitud=Label(root,text="Longitud:",bg="#57adff",fg="black",font=("arial",10,"bold"))
-longitud.place(x=50,y=520)
+longitud.place(x=200,y=520)
 
 latitud=Label(root,text="Latitud:",bg="#57adff",fg="black",font=("arial",10,"bold"))
-latitud.place(x=200,y=520)
+latitud.place(x=50,y=520)
 
 root.mainloop()
