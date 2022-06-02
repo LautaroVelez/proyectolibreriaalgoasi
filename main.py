@@ -14,7 +14,7 @@ import webbrowser
 
 root = Tk()
 root.title("Localizador de telefono-LJM")
-root.geometry("365x564+200+200")
+root.geometry("500x700")
 root.resizable(False,False)
 
 
@@ -61,46 +61,48 @@ def buscar():
     
 ####            INTERFAZ GRAFICA OORRRWWWW         ############
 
+
 #LOGO
 logo=PhotoImage(file="logo.png")
-Label(root,image=logo).place(x=240,y=70)
+Label(root,image=logo).place(x=320,y=70)
 Heading=Label(root,text="Localizador de telefono",font=("Arial",15,"bold"),fg="black",bg="white")
-Heading.place(x=30,y=110)
+Heading.place(x=110,y=110)
 
 #ENTRADA DE DATOS
 Entry_back=PhotoImage(file="buscador.png")
-Label(root,image=Entry_back).place(x=20,y=190)
+Label(root,image=Entry_back).place(x=80,y=190)
 entrada=StringVar()
 meter_num=Entry(root,textvariable=entrada,width=17,bd=0,font=("Arial",20))
-meter_num.place(x=50,y=220)
+meter_num.place(x=110,y=220)
 
 #BOTONOVICH
 buscar_imagen=PhotoImage(file="search.png") 
 search=Button(image=buscar_imagen,borderwidth=0,cursor="hand2",bd=0,font=("arial",16),command=buscar)
-search.place(x=35,y=300)
+search.place(x=95,y=300)
 
 #BOTTONBOX
 box=PhotoImage(file="box.png")
-Label(root,image=box).place(x=0,y=380)
+Label(root,image=box).place(x=60,y=380)
+
+
 
 pais=Label(root,text="País:",bg="#57adff",fg="black",font=("arial",10,"bold"))
-pais.place(x=50,y=440)
+pais.place(x=110,y=440)
 
 sim=Label(root,text="SIM:",bg="#57adff",fg="black",font=("arial",10,"bold"))
-sim.place(x=200,y=440)
+sim.place(x=260,y=440)
 
 zona=Label(root,text="Zona:",bg="#57adff",fg="black",font=("arial",10,"bold"))
-zona.place(x=50,y=480)
+zona.place(x=110,y=480)
 
 clock=Label(root,text="Phone Time:",bg="#57adff",fg="black",font=("arial",10,"bold"))
-clock.place(x=200,y=480)
+clock.place(x=260,y=480)
 
 longitud=Label(root,text="Longitud:",bg="#57adff",fg="black",font=("arial",10,"bold"))
-longitud.place(x=200,y=520)
+longitud.place(x=260,y=520)
 
 latitud=Label(root,text="Latitud:",bg="#57adff",fg="black",font=("arial",10,"bold"))
-latitud.place(x=50,y=520)
-
+latitud.place(x=110,y=520)
 link1 = Label (root, text="Maps", fg="blue", cursor="hand2")
 link1.pack()
 
