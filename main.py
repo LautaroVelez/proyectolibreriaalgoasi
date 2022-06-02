@@ -10,10 +10,12 @@ from geopy.geocoders import Nominatim
 from datetime import datetime
 import pytz
 from opencage.geocoder import OpenCageGeocode
+import numpy as np
+import webbrowser
 
 root = Tk()
 root.title("Localizador de telefono-LJM")
-root.geometry("365x584+200+200")
+root.geometry("365x564+200+200")
 root.resizable(False,False)
 
 
@@ -39,28 +41,22 @@ def buscar():
     results=geocodereano.geocode(query)
     lat=results[0]['geometry']['lat']
     long=results[0]['geometry']['lng']
-    ##map=results[0]['geometry']['note_url']
-    print(results)
-
-
-    
     longitud.config(text=long)
     latitud.config(text=lat)
 
-    #horadelcelu
-    obj=TimezoneFinder()
-    result= obj.timezone_at(lng=location.longitude, lat=location.latitude)
-
-    home=pytz.timezone(result)
-    local_time=datetime.now(home)
-    current_time= local_time.strftime("%I:%M:%p")
-    clock.config(text=current_time)
-
+    link1.bind("<Button-1>", lambda e: callback(f"https://www.openstreetmap.org/note/new#map=17/{lat}/{long}&layers=N"))
     
+
+    #horadelcelu
+    ##obj=TimezoneFinder()
+    ##result= obj.timezone_at(lng=locate.longitude, lat=locate.latitude)
+
+    ##home=pytz.timezone(result)
+    ##local_time=datetime.now(home)
+    ##current_time= local_time.strftime("%I:%M:%p")
+    ##clock.config(text=current_time)
     
 ####            INTERFAZ GRAFICA OORRRWWWW         ############
-
-
 
 #LOGO
 logo=PhotoImage(file="logo.png")
@@ -101,5 +97,11 @@ longitud.place(x=200,y=520)
 
 latitud=Label(root,text="Latitud:",bg="#57adff",fg="black",font=("arial",10,"bold"))
 latitud.place(x=50,y=520)
+
+def callback(url):
+    webbrowser.open_new(url)
+
+link1 = Label (root, text="Maps", fg="blue", cursor="hand2")
+link1.pack()
 
 root.mainloop()
