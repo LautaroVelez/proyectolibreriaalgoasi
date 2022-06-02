@@ -51,15 +51,11 @@ def buscar():
     
 
     #horadelcelu
-    ##obj=TimezoneFinder()
-    ##result= obj.timezone_at(lng=locate.longitude, lat=locate.latitude)
-
-    ##home=pytz.timezone(result)
-    ##local_time=datetime.now(home)
-    ##current_time= local_time.strftime("%I:%M:%p")
-    ##clock.config(text=current_time)
+    hora=datetime.now(pytz.timezone(time[0]))
+    hora_local=hora.strftime("%H:%M:%S")
+    clock.config(text=hora_local)
     
-####            INTERFAZ GRAFICA OORRRWWWW         ############
+####            INTERFAZ GRAFICA          ############
 
 
 #LOGO
