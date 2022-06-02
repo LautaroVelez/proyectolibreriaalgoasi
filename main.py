@@ -10,8 +10,6 @@ from geopy.geocoders import Nominatim
 from datetime import datetime
 import pytz
 from opencage.geocoder import OpenCageGeocode
-import numpy as np
-import webbrowser
 
 root = Tk()
 root.title("Localizador de telefono-LJM")
