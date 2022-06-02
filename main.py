@@ -86,19 +86,20 @@ pais=Label(root,text="País:",bg="#57adff",fg="black",font=("arial",10,"bold"))
 pais.place(x=110,y=440)
 
 sim=Label(root,text="SIM:",bg="#57adff",fg="black",font=("arial",10,"bold"))
-sim.place(x=260,y=440)
+sim.place(x=270,y=440)
 
 zona=Label(root,text="Zona:",bg="#57adff",fg="black",font=("arial",10,"bold"))
 zona.place(x=110,y=480)
 
 clock=Label(root,text="Phone Time:",bg="#57adff",fg="black",font=("arial",10,"bold"))
-clock.place(x=260,y=480)
+clock.place(x=270,y=480)
 
 longitud=Label(root,text="Longitud:",bg="#57adff",fg="black",font=("arial",10,"bold"))
-longitud.place(x=260,y=520)
+longitud.place(x=270,y=520)
 
 latitud=Label(root,text="Latitud:",bg="#57adff",fg="black",font=("arial",10,"bold"))
 latitud.place(x=110,y=520)
+
 link1 = Label (root, text="Maps", fg="blue", cursor="hand2")
 link1.pack()
 
