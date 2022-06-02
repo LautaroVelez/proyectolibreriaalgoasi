@@ -10,6 +10,7 @@ from geopy.geocoders import Nominatim
 from datetime import datetime
 import pytz
 from opencage.geocoder import OpenCageGeocode
+import webbrowser
 
 root = Tk()
 root.title("Localizador de telefono-LJM")
@@ -32,6 +33,10 @@ def buscar():
     #timezone
     time=timezone.time_zones_for_geographical_number(numero)
     zona.config(text=time)
+
+    
+    def callback(url):
+        webbrowser.open_new(url)
 
     #longitudylatitud
     geocodereano = OpenCageGeocode("d3cf1876e1b2445a99d97127c77cfce8")
@@ -95,9 +100,6 @@ longitud.place(x=200,y=520)
 
 latitud=Label(root,text="Latitud:",bg="#57adff",fg="black",font=("arial",10,"bold"))
 latitud.place(x=50,y=520)
-
-def callback(url):
-    webbrowser.open_new(url)
 
 link1 = Label (root, text="Maps", fg="blue", cursor="hand2")
 link1.pack()
