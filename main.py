@@ -72,7 +72,7 @@ search.place(x=95,y=300)
 
 
 #IMAGEN MAPS
-maps_imagen= Image.open("media\marcador-de-mapa.png")
+maps_imagen= Image.open("marcador-de-mapa.png")
 maps_imagen=maps_imagen.resize((40,40),Image.LANCZOS)
 maps_imagen=itk.PhotoImage(maps_imagen)
 maps_imagen_lbl=Label(root,image=maps_imagen)
