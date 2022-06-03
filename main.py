@@ -1,20 +1,17 @@
-from locale import currency
-from re import L
 from tkinter import *
 import phonenumbers
 from phonenumbers import carrier
 from phonenumbers import geocoder
 from phonenumbers import timezone
-from timezonefinder import TimezoneFinder
-from geopy.geocoders import Nominatim
 from datetime import datetime
-import pytz
 from opencage.geocoder import OpenCageGeocode
 import webbrowser
+import pytz
+from PIL import Image, ImageTk as itk
 
 root = Tk()
 root.title("Localizador de telefono-LJM")
-root.geometry("500x700")
+root.geometry("500x630")
 root.resizable(False,False)
 
 
@@ -55,14 +52,11 @@ def buscar():
     hora_local=hora.strftime("%H:%M:%S")
     clock.config(text=hora_local)
     
-####            INTERFAZ GRAFICA          ############
+######################INTERFAZ GRAFICA#############################################
 
-
-#LOGO
-logo=PhotoImage(file="logo.png")
-Label(root,image=logo).place(x=320,y=70)
-Heading=Label(root,text="Localizador de telefono",font=("Arial",15,"bold"),fg="black",bg="white")
-Heading.place(x=110,y=110)
+#TITULO
+titulo=PhotoImage(file="titulo.png")
+Label(root,image=titulo).place(x=80,y=80)
 
 #ENTRADA DE DATOS
 Entry_back=PhotoImage(file="buscador.png")
@@ -76,31 +70,53 @@ buscar_imagen=PhotoImage(file="search.png")
 search=Button(image=buscar_imagen,borderwidth=0,cursor="hand2",bd=0,font=("arial",16),command=buscar)
 search.place(x=95,y=300)
 
-#BOTTONBOX
-box=PhotoImage(file="box.png")
-Label(root,image=box).place(x=60,y=380)
 
+#IMAGEN MAPS
+maps_imagen= Image.open("media\marcador-de-mapa.png")
+maps_imagen=maps_imagen.resize((40,40),Image.LANCZOS)
+maps_imagen=itk.PhotoImage(maps_imagen)
+maps_imagen_lbl=Label(root,image=maps_imagen)
+maps_imagen_lbl.pack()
 
+#LABELS
+pais=Label(root,text="",fg="black",font=("Cambria",12,"bold"))
+pais.place(x=250,y=380)
 
-pais=Label(root,text="País:",bg="#57adff",fg="black",font=("arial",10,"bold"))
-pais.place(x=110,y=440)
+sim=Label(root,text="",fg="black",font=("Cambria",12,"bold"))
+sim.place(x=250,y=420)
 
-sim=Label(root,text="SIM:",bg="#57adff",fg="black",font=("arial",10,"bold"))
-sim.place(x=270,y=440)
+zona=Label(root,text="",fg="black",font=("Cambria",12,"bold"))
+zona.place(x=250,y=460)
 
-zona=Label(root,text="Zona:",bg="#57adff",fg="black",font=("arial",10,"bold"))
-zona.place(x=110,y=480)
+clock=Label(root,text="",fg="black",font=("Cambria",12,"bold"))
+clock.place(x=250,y=500)
 
-clock=Label(root,text="Phone Time:",bg="#57adff",fg="black",font=("arial",10,"bold"))
-clock.place(x=270,y=480)
+longitud=Label(root,text="",fg="black",font=("Cambria",12,"bold"))
+longitud.place(x=250,y=540)
 
-longitud=Label(root,text="Longitud:",bg="#57adff",fg="black",font=("arial",10,"bold"))
-longitud.place(x=270,y=520)
+latitud=Label(root,text="",fg="black",font=("Cambria",12,"bold"))
+latitud.place(x=250,y=580)
 
-latitud=Label(root,text="Latitud:",bg="#57adff",fg="black",font=("arial",10,"bold"))
-latitud.place(x=110,y=520)
-
-link1 = Label (root, text="Maps", fg="blue", cursor="hand2")
+link1 = Label (root, text="Maps", fg="blue", cursor="hand2", font=("Cambria", 12, "bold"))
 link1.pack()
+
+#########################TEXTO INSERVIBLE##############################
+pais1=Label(root,text="Localidad:",fg="black",font=("Cambria",12,"bold"))
+pais1.place(x=140,y=380)
+
+sim1=Label(root,text="Proveedor:",fg="black",font=("Cambria",12,"bold"))
+sim1.place(x=140,y=420)
+
+zona1=Label(root,text="Zona:",fg="black",font=("Cambria",12,"bold"))
+zona1.place(x=140,y=460)
+
+clock1=Label(root,text="Hora:",fg="black",font=("Cambria",12,"bold"))
+clock1.place(x=140,y=500)
+
+longitud1=Label(root,text="Longitud:",fg="black",font=("Cambria",12,"bold"))
+longitud1.place(x=140,y=540)
+
+latitud1=Label(root,text="Latitud:",fg="black",font=("Cambria",12,"bold"))
+latitud1.place(x=140,y=580)
 
 root.mainloop()
